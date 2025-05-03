@@ -1,0 +1,33 @@
+<ion-content class="main-content">
+  <div class="header">
+    <img src="../../../assets/recetiva.png" alt="">
+  </div>
+
+  <div class="form-container">
+    <div class="title">
+      <h1 class="montserrat">Inicie sesion</h1>
+    </div>
+    <form class="form">
+      <ion-item>
+        <ion-icon name="mail-outline"></ion-icon>
+        <ion-input placeholder=" Email" [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="key-outline"></ion-icon>
+        <ion-input type="password" placeholder=" Password" [(ngModel)]="user.password" name="password"></ion-input>
+      </ion-item>
+      <p class="montserrat forgotPass">¿olvidaste tu contraseña?</p>
+      <ion-button class="montserrat" (click)="login()">Login</ion-button>
+
+      <img class="divider" src="../../../assets/divider.svg" alt="">
+      <ion-button expand="full" color="danger" >
+        <ion-icon name="logo-google" slot="start"></ion-icon>
+        Iniciar sesión con Google
+      </ion-button>
+
+      <p class="montserrat donthaveUSer" routerLink="/register">¿No tienes un usuario? Registrate</p>
+    </form>
+
+  </div>
+  
+</ion-content>

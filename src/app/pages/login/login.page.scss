@@ -1,0 +1,82 @@
+.main-content {
+    --background: #e0f2f1; // color de fondo general
+    position: relative;
+  }
+  
+  .header {
+    background-color: #03757f;
+    color: white;
+    text-align: center;
+    padding: 60px 20px 120px;
+    img{
+      width: 250px;
+    };
+  }
+  
+  .form-container {
+    position: absolute;
+    top: 220px; // lo suficiente para solapar el header
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f9f9f9;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding: 20px;
+    z-index: 10;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ion-button{
+      --background:#03757f;
+      --border-radius:20px ;
+    }
+  }
+  
+  
+  .form-container{
+  
+    .title{
+      width: 100%;
+      display: flex;
+      justify-content: start;
+      h1{
+        font-weight: bold;
+        color:#03757f ;
+      }
+    }
+  
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 90%;
+      ion-item{
+        border-radius:20px ;
+      }
+      ion-button{
+        --background:#03757f;
+        --border-radius:20px ;
+      }
+      .forgotPass{
+        text-align: end;
+        color:#03757f;
+        margin: 0;
+      }
+      .donthaveUSer{
+        text-align: center;
+        color:#03757f;
+        margin: 0;
+      }
+    
+    }
+  
+    .divider{
+      margin-top: 20px;
+    }
+  }
+  
+  
+  

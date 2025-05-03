@@ -1,0 +1,29 @@
+<ion-content class="main-content">
+  <div class="header">
+    <img src="../../../assets/recetiva.png" alt="">
+  </div>
+
+  <div class="form-container">
+    <div class="title">
+      <h1 class="montserrat">Registre su Usuario</h1>
+    </div>
+    <form class="form">
+      <ion-item>
+        <ion-icon name="mail-outline"></ion-icon>
+        <ion-input placeholder=" Email" [(ngModel)]="user.email" name="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="key-outline"></ion-icon>
+        <ion-input type="password" placeholder=" Contraseña" [(ngModel)]="user.password" name="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="key-outline"></ion-icon>
+        <ion-input type="password" placeholder=" confirmar contraseña" [(ngModel)]="user.repeatPassword" name="repeatPassword"></ion-input>
+      </ion-item>
+      <p class="montserrat forgotPass" routerLink="/login">¿Ya tenes usuario? Logueate</p>
+      <ion-button class="montserrat" (click)="registerUser()">Registrarme</ion-button>
+    </form>
+
+  </div>
+
+</ion-content>
