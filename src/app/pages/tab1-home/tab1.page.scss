@@ -1,80 +1,92 @@
-ion-header{
-    img{
-        width: 150px;
-        padding: 5px;
-    }
+ion-header {
+  img {
+    width: 150px;
+    padding: 5px;
+  }
 }
 
-ion-content{
-    --background: rgb(239, 239, 239);
+ion-content {
+  --background: rgb(239, 239, 239);
 
-    .contenedor{
-        display: flex;
-        flex-direction: column;
-    
-        .buscador{
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-top:20px;
-            ion-item{
-                width: 90%;
-                border:1px solid #03757f;
-                --background: #03757f2f;
-                border-radius: 25px;
-    
-            }
-        }
-    
-        .categorias-scroll {
-            display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 0 16px;
-            margin-top: 8px;
-          
-            /* Ocultar scrollbar en navegadores modernos */
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE 10+ */
-          
-            &::-webkit-scrollbar {
-              display: none; /* Chrome, Safari, Opera */
-            }
-          
-            ion-chip {
-              margin-right: 8px;
-              flex-shrink: 0;
-              --background: #03757f2f;
-            }
-        }
-    
-        ion-card {
-            margin: 8px 4px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            cursor: pointer;
-          
-            img {
-              width: 100%;
-              height: 120px;
-              object-fit: cover;
-            }
-          
-            ion-card-content {
-              padding: 8px;
-          
-              h3 {
-                font-size: 16px;
-                margin: 0;
-              }
-          
-              .tiempo {
-                font-size: 14px;
-                color: #888;
-              }
-            }
-          }
+  .contenedor {
+    display: flex;
+    flex-direction: column;
+
+    .buscador {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+
+      ion-item {
+        width: 90%;
+        border: 1px solid #03757f;
+        --background: #03757f2f;
+        border-radius: 25px;
+
+      }
     }
-}
 
+    .categorias-scroll {
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 0 16px;
+      margin-top: 8px;
+
+      /* Ocultar scrollbar en navegadores modernos */
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE 10+ */
+
+      &::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
+      }
+
+      ion-chip {
+        margin-right: 8px;
+        flex-shrink: 0;
+        --background: #03757f2f;
+      }
+
+
+      
+      .custom-chip.selected {
+        --background: #2E4A4D;  // tu color activo personalizado
+        --color: #fff;
+      }
+    }
+
+    ion-card {
+      margin: 8px 4px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+      }
+
+      ion-card-content {
+        padding: 8px;
+
+        h3 {
+          font-size: 16px;
+          margin: 0;
+        }
+
+        .tiempo {
+          font-size: 14px;
+          color: #888;
+        }
+      }
+    }
+
+   
+  }
+}
