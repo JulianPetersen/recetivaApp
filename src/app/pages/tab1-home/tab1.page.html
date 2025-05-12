@@ -13,29 +13,14 @@
       </ion-item>
     </div>
 
-    <div class="categorias-scroll">
-      <ion-chip 
-      *ngFor="let categoria of categorias"
-      (click)="toggleCategory(categoria)"
-      [class.selected]="ChipselectedCategories.includes(categoria)"
-      class="custom-chip"
-      >
-        <ion-label class="montserrat">{{ categoria }}</ion-label>
-      </ion-chip>
-    </div>
-      
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6" *ngFor="let receta of recetas">
-          <ion-card>
-            <img [src]="receta.img" alt="receta" />
-            <ion-card-content>
-              <h3>{{ receta.title }}</h3>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+
+    <app-categorie-scroll (categoriaSeleccionada)="filtrarPorCategoria($event)"></app-categorie-scroll>
+    <app-list-recetas [recetas]="recetas"></app-list-recetas>
+
+    <ion-infinite-scroll (ionInfinite)="loadMore($event)" threshold="100px">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
   </div>
 
 

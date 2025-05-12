@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Categorie } from 'src/app/models/categorie';
 import { Recetas } from 'src/app/models/recetas';
+import { CategoriesService } from 'src/app/services/categories.service';
 import { RecetasService } from 'src/app/services/recetas.service';
 
 @Component({
@@ -8,47 +10,57 @@ import { RecetasService } from 'src/app/services/recetas.service';
   styleUrls: ['tab1.page.scss'],
   standalone: false,
 })
-export class Tab1Page {
   
-  searchText:string="";
-  categorias: string[] = ['Categorías', 'Tiempo', 'Dificultad','ensaladas','guisos','con arroz',];
+ export class Tab1Page {
+  searchText: string = "";
+  categoriaSeleccionadaId: string | null = null;
+  recetas: Recetas[] = [];
 
-  recetas:Recetas[] = [];
+  currentPage = 1;
+  totalPages = 1;
+  isLoading = false;
 
-  ChipselectedCategories: string[] = [];
-  constructor(private receta:RecetasService) { 
-    
+  constructor(private recetaService: RecetasService) {}
+
+  ngOnInit() {
+    this.loadRecetas();
   }
 
-
-  ngOnInit(){
-    this.getAllRecetas();
-  }
-
-
-
-  getAllRecetas(){
-    this.receta.getAllRecetas()
-      .subscribe({
-        next:((res:Recetas[]) => {
-          console.log('recetas obtenidas',res);
-          this.recetas = res
-        }),
-        error : ((err) => {
-          console.log(err);
-        })
-      })
-  }
-
-  toggleCategory(cat: string) {
-    const index = this.ChipselectedCategories.indexOf(cat);
-    if (index > -1) {
-      // Ya estaba seleccionada, la quitamos
-      this.ChipselectedCategories.splice(index, 1);
-    } else {
-      // No estaba seleccionada, la agregamos
-      this.ChipselectedCategories.push(cat);
+  loadRecetas(reset: boolean = false) {
+    if (reset) {
+      this.currentPage = 1;
+      this.recetas = [];
     }
-    console.log(cat)
+
+    this.isLoading = true;
+
+    const serviceCall = this.categoriaSeleccionadaId
+      ? this.recetaService.getRecetasPorCategoriaPaginado(this.categoriaSeleccionadaId, this.currentPage)
+      : this.recetaService.getRecetasPaginadas(this.currentPage);
+
+    serviceCall.subscribe(res => {
+      this.recetas = [...this.recetas, ...res.docs];
+      this.totalPages = res.totalPages;
+      this.isLoading = false;
+    });
+  }
+
+  loadMore(event: any) {
+    if (this.currentPage >= this.totalPages) {
+      event.target.disabled = true;
+      return;
+    }
+
+    this.currentPage++;
+    this.loadRecetas();
+    event.target.complete();
+  }
+
+  filtrarPorCategoria(categoriaId: string | null) {
+    this.categoriaSeleccionadaId = categoriaId;
+    this.recetas = [];
+    this.currentPage = 1;
+    this.loadRecetas(true);
   }
 }
+

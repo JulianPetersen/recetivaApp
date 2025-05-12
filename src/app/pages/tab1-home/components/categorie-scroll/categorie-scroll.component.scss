@@ -1,0 +1,31 @@
+.categorias-scroll {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0 16px;
+    margin-top: 8px;
+
+    /* Ocultar scrollbar en navegadores modernos */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+
+    &::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari, Opera */
+    }
+
+    ion-chip {
+      margin-right: 8px;
+      flex-shrink: 0;
+      --background: #03757f2f;
+    }
+
+
+    
+    .custom-chip.selected {
+      --background: #2E4A4D;  // tu color activo personalizado
+      --color: #fff;
+    }
+  }
